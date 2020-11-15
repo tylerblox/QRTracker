@@ -81,7 +81,7 @@ export function confirmQrCode(confirmed, payload){
         return (dispatch, getState) => {
             dispatch(confirmCodeBegin)
             fetch(
-                'http://localhost:8000/api/event_register/',
+                'https://localhost:8000/api/event_register/',
                 {
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
                     mode: 'cors', // no-cors, *cors, same-origin
