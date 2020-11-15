@@ -132,9 +132,9 @@ STATICFILES_DIRS = [os.path.join(BACKEND_DIR, 'staticfiles') if DEBUG else os.pa
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATICFILES_STORAGE = (
-    'whitenoise.storage.CompressedManifestStaticFilesStorage'
-)
+# STATICFILES_STORAGE = (
+#     'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# )
 
 STATIC_ROOT = os.path.join(BACKEND_DIR, 'static')
 
