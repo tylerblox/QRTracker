@@ -32,7 +32,7 @@ APP_DISPLAY_NAME = "Florida's Finest"
 DEBUG = os.environ.get('DJANGO_ENV') == 'development'
 
 APP_LOCATION = 'localhost:8000' if DEBUG else os.environ.get('QR_APP_LOCATION','')
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
