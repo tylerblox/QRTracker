@@ -43,7 +43,7 @@ const scanCodeError = (error) => ({
 export function scanQrCode(url){
     return (dispatch, getState) => {
         dispatch(scanCodeBegin)
-        fetch('https://' + url)
+        fetch(process.env.REACT_APP_SSL + '://' + url)
         .then(res => {
 
             if (!res.ok){
@@ -81,7 +81,7 @@ export function confirmQrCode(confirmed, payload){
         return (dispatch, getState) => {
             dispatch(confirmCodeBegin)
             fetch(
-                'https://localhost:8000/api/event_register/',
+                process.env.REACT_APP_HOST + '/api/event_register/',
                 {
                     method: 'POST', // *GET, POST, PUT, DELETE, etc.
                     mode: 'cors', // no-cors, *cors, same-origin
