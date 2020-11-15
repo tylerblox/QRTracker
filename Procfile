@@ -1,1 +1,1 @@
-web: gunicorn backend.qrtracker.wsgi
+web: gunicorn DJANGO_SETTINGS_MODULE=backend.qrtracker.settings backend.qrtracker.wsgi
