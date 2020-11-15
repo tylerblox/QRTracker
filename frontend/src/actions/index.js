@@ -43,7 +43,7 @@ const scanCodeError = (error) => ({
 export function scanQrCode(url){
     return (dispatch, getState) => {
         dispatch(scanCodeBegin)
-        fetch('http://' + url)
+        fetch('https://' + url)
         .then(res => {
 
             if (!res.ok){
