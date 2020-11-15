@@ -1,1 +1,1 @@
-web: gunicorn backend.qrtracker.wsgi:application
+web: gunicorn backend.qrtracker.wsgi
