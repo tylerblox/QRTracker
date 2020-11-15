@@ -18,12 +18,13 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url
 from django.urls import include, path
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, re_path
 from rest_framework import routers
 from qrtracker.api import views as apiViews
 from . import views
 from qrtracker.forms import CustomAuthForm
+
 
 
 
@@ -34,6 +35,7 @@ router.register('event_register', apiViews.EventPromoterRegisterViewSet)
 urlpatterns = [
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
+    path("logout/", LogoutView.as_view(), name="logout"),
     path('login/', LoginView.as_view(template_name='login.html', authentication_form=CustomAuthForm), name="login"),
     re_path(r'^(?P<path>.*)/$', views.catchall),
     path('',  views.catchall)
