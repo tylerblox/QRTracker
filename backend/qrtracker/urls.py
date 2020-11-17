@@ -37,6 +37,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("logout/", LogoutView.as_view(), name="logout"),
     path('login/', LoginView.as_view(template_name='login.html', authentication_form=CustomAuthForm), name="login"),
+    path('maketicket/', views.makeTicket, name="make-ticket"),
+    path('ticket/', views.ticketView, name="ticket"),
     re_path(r'^(?P<path>.*)/$', views.catchall),
     path('',  views.catchall)
 ]

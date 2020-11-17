@@ -78,6 +78,10 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 "qrtracker.context_processors.app_constants",
             ],
+            'libraries':{
+                'qr_templatetags': 'templatetags.get_qr_code',
+
+            }
         },
     },
 ]

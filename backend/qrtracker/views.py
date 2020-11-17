@@ -1,13 +1,38 @@
 from django.views.generic import TemplateView
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.template.loader import get_template
 import requests
 from django import http
 from django.conf import settings
 from django.template import engines
 from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
+from qrtracker.models import Event, Location, EventPromoter
 
+from PIL import Image
+
+def ticketView(request):
+    template = get_template('../templates/ticket.html')
+    data = {
+        'event': Event.objects.all().first(),
+        'location': Location.objects.all().first(),
+        'eventpromoter': EventPromoter.objects.all().first()
+    }
+    html=template.render(data)
+
+    # TODO: convert html page to pdf or whatever to return via api admin
+
+    return render(request, 'ticket.html', data)
+
+def makeTicket(request):
+    id = int(request.GET.get('id'))
+    size = int(request.GET.get('size'))
+    image = EventPromoter.objects.get(id=id).generate_qr_code()
+    image_sized = image.resize((size, size), Image.ANTIALIAS)
+    response = http.HttpResponse(content_type="image/PNG")
+    image_sized.save(response, "PNG")
+    return response
 
 def login(request):
     print('get here')
