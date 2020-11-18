@@ -1,16 +1,11 @@
 import React from 'react'
 
 export const ConfirmEventModal = (props) => {
-    const showModal = (props) => {
-        return props.most_recent_code
-        && props.qr_code_fetched &&
-        !props.qr_code_fetch_error 
-        && !props.confirmed_qr_code
-    }
-    return showModal(props) ? (
+    
+    return (
           <div className="confirm-event-modal">
             <div className="confirm-event-content">
-                {props.error_with_confirmation && (<p>Error in confirming event.  Please try again, or <span onClick={props.resetScanner}>Scan a new Code</span></p>)}
+                {props.error_with_confirmation && (<p className="error-text">Error in confirming event.  Please try again, or <span onClick={props.resetScanner}>Scan a new Code</span></p>)}
                 <h1>Confirm this Event</h1>
                 <ul>
                 <li>
@@ -49,6 +44,6 @@ export const ConfirmEventModal = (props) => {
             </div>
 
           </div>
-        ) : null
+        )
         
 }

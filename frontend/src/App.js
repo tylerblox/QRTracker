@@ -31,19 +31,27 @@ function App(props) {
     const {scanMode} = state
     setState({...state, scanMode: !scanMode})
   }
+
+  const showModal = (
+    props.most_recent_code
+    && props.qr_code_fetched &&
+    !props.qr_code_fetch_error 
+    && !props.confirmed_qr_code
+  )
+
  
   return (
     <div className="App" style={{height: window.innerHeight}}>
 
-      <ConfirmEventModal 
-        most_recent_code = {props.most_recent_code}
-        qr_code_fetched = {props.qr_code_fetched}
-        qr_code_fetch_error = {props.qr_code_fetch_error}
-        confirmed_qr_code = {props.confirmed_qr_code}
-        error_with_confirmation = { props.error_with_confirmation}
-        resetScanner = {props.resetScanner}
-        confirmQrCode = {props.confirmQrCode}
-      />
+      {
+        showModal && <ConfirmEventModal 
+            most_recent_code = {props.most_recent_code}
+            confirmed_qr_code = {props.confirmed_qr_code}
+            error_with_confirmation = { props.error_with_confirmation}
+            resetScanner = {props.resetScanner}
+            confirmQrCode = {props.confirmQrCode}
+          />
+      }
 
       <button onClick={changeScanModeSetting}>
         {state.scanMode ? 'Switch To Manual Input' : 'Switch to Scanner Mode'}
@@ -70,15 +78,19 @@ function App(props) {
               {props.loading && <p>Loading...</p>}
             {props.qr_code_fetch_error && <p>There was an error scanning the QR code.. {props.qr_code_fetch_error.message}</p>}
             </div>
-            <button
-              onClick={
-                () => {
-                  props.setScannerActive(!props.scanner_active)
-                }
-              }
-            >
-              {props.most_recent_code ? 'Scan Again' : props.scanner_active ? 'Stop Scanning' : 'Start Scanning'}
-            </button>
+            {
+              !showModal ? (
+                <button
+                  onClick={
+                    () => {
+                      props.setScannerActive(!props.scanner_active)
+                    }
+                  }
+                >
+                  {props.most_recent_code ? 'Scan Again' : props.scanner_active ? 'Stop Scanning' : 'Start Scanning'}
+                </button>
+              ) : null
+            }
           </>
         ) : <p> manual entry mode todo: </p>
       }

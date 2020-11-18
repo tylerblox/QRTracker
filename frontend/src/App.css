@@ -12,6 +12,10 @@ p, .registration-success {
   color: white;
 }
 
+.error-text {
+  color: #FE2712;
+}
+
 
 .App-logo {
   height: 40vmin;
