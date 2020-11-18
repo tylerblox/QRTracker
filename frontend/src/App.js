@@ -59,7 +59,6 @@ function App(props) {
                     delay={1000}
                     onError={handleError}
                     onScan={handleScan}
-                    style={{ width: '100%'}}
                   />
                 ) || <p> Begin Scanning Below...</p>
               }

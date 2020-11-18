@@ -1,13 +1,10 @@
-body {
-  height: 100vh;
-}
 #root {
-  height: 100%;
+  height: 100vh;
 }
 .App {
   text-align: center;
   background-color: black;
-  height:100%;
+  height:100vh;
   display: grid;
   grid-template-rows: repeat(10, 10%);
 }
@@ -80,6 +77,7 @@ button:hover {
 
 .qr-scanner {
   height: max-content;
+  width: 100%;
 }
 
 .qr-content {
@@ -87,12 +85,29 @@ button:hover {
   display: grid;
   align-items: center;
 }
+@media only screen and (min-device-height : 375px) and (max-device-height : 400px) {
+  .App {
+    text-align: center;
+    background-color: black;
+    height:100vh;
+    display: grid;
+    grid-template-rows: repeat(12, 10%);
+  }
+  .qr-content {
+    grid-row: 4 / span 8;
+    display: grid;
+    align-items: center;
+  }
+  button {
+    margin: 10px;
+  }
+}
 
 .confirm-event-modal {
   background-color: white;
-  position: fixed;
+  position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   z-index: 1000;
   display: flex;
