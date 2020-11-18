@@ -92,7 +92,6 @@ export function confirmQrCode(confirmed, payload){
                     'X-CSRFToken': getCookie('csrftoken')
                     },
                     redirect: 'follow', // manual, *follow, error
-                    referrerPolicy: 'no-referrer', // no-referrer, *client
                     body: JSON.stringify(payload) // body data type must match "Content-Type" header
                 }
             )
