@@ -4,9 +4,9 @@
 .App {
   text-align: center;
   background-color: black;
-  height:100vh;
   display: grid;
   grid-template-rows: repeat(10, 10%);
+  overflow: hidden;
 }
 p, .registration-success {
   color: white;
@@ -22,17 +22,6 @@ p, .registration-success {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
@@ -92,7 +81,6 @@ button:hover {
   .App {
     text-align: center;
     background-color: black;
-    height:100vh;
     display: grid;
     grid-template-rows: repeat(12, 10%);
   }

@@ -33,7 +33,7 @@ function App(props) {
   }
  
   return (
-    <div className="App">
+    <div className="App" style={{height: window.innerHeight}}>
 
       <ConfirmEventModal 
         most_recent_code = {props.most_recent_code}
