@@ -56,12 +56,14 @@ button, .button--primary {
   border: none;
   background-color: aquamarine;
   border-radius: 2px;
+  cursor: pointer;
 }
 
 .button--secondary {
   background-color: crimson;
   border-color: white;
   color: white;
+  cursor: pointer;
 }
 
 button:hover {
@@ -73,6 +75,7 @@ button:hover {
   background-color: rgb(126, 20, 41);
   border-color: white;
   color: white;
+  cursor: pointer;
 }
 
 .qr-scanner {
@@ -130,7 +133,6 @@ button:hover {
   justify-content: space-evenly;
   flex-shrink: 0;
   padding: 2em;
-
 }
 
 .confirm-event-content {
