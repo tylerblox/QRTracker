@@ -31,10 +31,12 @@ from qrtracker.forms import CustomAuthForm
 router = routers.DefaultRouter()
 router.register('event_promoter', apiViews.EventPromoterViewSet)
 router.register('event_register', apiViews.EventPromoterRegisterViewSet)
+router.register('events', apiViews.EventStatisticsViewSet)  
 
 urlpatterns = [
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
+    path('admin/statistics/', views.admin_statistics),
     path("logout/", LogoutView.as_view(), name="logout"),
     path('login/', LoginView.as_view(template_name='login.html', authentication_form=CustomAuthForm), name="login"),
     path('maketicket/', views.makeTicket, name="make-ticket"),

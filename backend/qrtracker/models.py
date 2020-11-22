@@ -13,6 +13,9 @@ class Promoter(models.Model):
 
     def __str__(self):
         return "Promoter: {0} {1}".format(self.first_name, self.last_name)
+    
+    def full_name(self):
+        return "{0} {1}".format(self.first_name, self.last_name)
 
 class Location(models.Model):
     name = models.CharField(max_length=255)

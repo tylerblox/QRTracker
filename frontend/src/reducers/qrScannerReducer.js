@@ -31,6 +31,7 @@ export const qr_scanner = (state=initialState, action) => {
         case SET_SCANNER_ACTIVE:
             return {
                 ...state,
+                qr_code_fetch_error: null,
                 ...action.payload
             }
         case QR_SCANNER_START:
@@ -54,7 +55,7 @@ export const qr_scanner = (state=initialState, action) => {
                 scanner_active: false,
                 qr_code_fetched: false,
                 fetching_qr_code: false,
-                qr_code_fetch_error: action.payload.error
+                qr_code_fetch_error: action.payload.error.message
             }
         case CONFIRM_CODE_START:
             return {
