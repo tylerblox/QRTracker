@@ -7,6 +7,7 @@ from django.conf import settings
 from django.template import engines
 from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 def login(request):
@@ -48,3 +49,7 @@ def catchall_prod(request,  path=''):
     return render(request, 'index.html', {})
 
 catchall = catchall_dev if settings.DEBUG else catchall_prod
+
+@staff_member_required
+def admin_statistics(request, path='', upstream='http://localhost:3000/'):
+    return  catchall(request, path='', upstream='http://localhost:3000/')
