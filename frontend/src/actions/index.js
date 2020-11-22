@@ -3,6 +3,7 @@ export const QR_SCANNER_SUCCESS = 'QR_SCANNER_SUCCESS'
 export const QR_SCANNER_ERROR = 'QR_SCANNER_ERROR'
 
 export const RESET = 'RESET'
+
 export function resetScanner(){
     return (dispatch, getState) => {
         dispatch({
@@ -47,7 +48,7 @@ export function scanQrCode(url){
         .then(res => {
 
             if (!res.ok){
-                throw 'whoops'
+                dispatch(scanCodeError(res))
             }
             
             return res.json()
@@ -58,7 +59,6 @@ export function scanQrCode(url){
         .catch(err => dispatch(scanCodeError(err)))
     }
 }
-
 
 export const CONFIRM_CODE_START = 'CONFIRM_CODE_START'
 export const CONFIRM_CODE_SUCCESS = 'CONFIRM_CODE_SUCCESS'

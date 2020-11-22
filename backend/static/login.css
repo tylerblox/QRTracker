@@ -1,0 +1,96 @@
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
+    color: white;
+}
+body {
+    height: 100vh;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: grey;
+}
+.login-form-container {
+    background-color: white;
+    display: grid;
+    grid-template-rows: max-content 33% 33%;
+    padding: 0px;
+    margin: auto;
+    width: 70%;
+    padding: 5%;
+    box-shadow: 0px 0px 4px 10px aquamarine;
+    height: 90%;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+.login-form {
+    background-image: url('https://images.pexels.com/photos/461940/pexels-photo-461940.jpeg?auto=compress&cs=tinysrgb&h=650&w=940');
+    grid-row: 2 / span 3;
+}
+
+.login-form-items {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 70% 30%;
+    justify-content: center;
+    align-items: center;
+}
+.login-form-items table {
+    border-spacing: 1em;
+}
+
+.login-form-items table .form-field{
+    background-color: white;
+    border: 1px solid aquamarine;
+    padding: .5em;
+    border-radius: 5px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.login-form-items table .form-field:focus-within{
+    background-color: white;
+    border: 1px solid blue;
+    padding: .5em;
+    border-radius: 5px;
+}
+
+.login-form-items table .form-field input{
+    border: none;
+    outline: none;
+    font-size: large;
+}
+
+.login-form-items table .form-field input:focus{
+    outline: none;
+}
+
+.login-form-items .submission {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-button {
+    border: 1px solid darkgreen;
+    padding: 14px 40px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border: none;
+    background-color: aquamarine;
+    border-radius: 2px;
+}
+
+.login-button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.login-form-container { 
+    background-color: black;
+    text-align: center;
+}

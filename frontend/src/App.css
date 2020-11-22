@@ -78,6 +78,17 @@ button:hover {
   display: grid;
   align-items: center;
 }
+.arrow-moving-down {
+  animation-name: arrow-slide-down-animation;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes arrow-slide-down-animation {
+  0% {top: 20%;}
+  60% {top: 40%;}
+  100% {top: 20%;}
+}
 .scan {
   background-color:  #222;
   animation-name: begin-scan-animation;

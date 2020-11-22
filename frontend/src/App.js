@@ -6,7 +6,7 @@ import logo from './logo.svg';
 import './App.css';
 import {ConfirmEventModal} from './components/ConfirmEventModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCamera } from '@fortawesome/free-solid-svg-icons'
+import { faCamera, faArrowDown } from '@fortawesome/free-solid-svg-icons'
 
 function App(props) {
   const [state, setState] = React.useState({
@@ -14,6 +14,7 @@ function App(props) {
   })
 
   const {most_recent_code:resultFromScanner} = props
+
   React.useEffect(() => {
     resultFromScanner && props.setScannerActive(false)
   },[resultFromScanner])
@@ -24,14 +25,15 @@ function App(props) {
     }
   }
 
-  console.log(props.most_recent_code)
-
   const handleError = err => {
+    console.log('DO SOME THING WITH THIS ERROR')
     console.error(err)
   }
   const changeScanModeSetting = () => {
     const {scanMode} = state
+    props.resetScanner()
     setState({...state, scanMode: !scanMode})
+    
   }
 
   const showModal = (
@@ -41,7 +43,40 @@ function App(props) {
     && !props.confirmed_qr_code
   )
 
- 
+  const qrContent = React.useCallback((()=>{
+    console.log(props)
+    switch(true){
+      case !! props.qr_code_fetch_error:
+        return (
+          <p>
+            There was an error scanning the QR code.. {props.qr_code_fetch_error}
+          </p>
+        )
+      case props.most_recent_code && props.confirmed_qr_code:
+        return <h2 className="registration-success">Successfully registered!</h2>
+      case props.scanner_active:
+        return (
+          <QrReader
+            className="qr-scanner"
+            delay={1000}
+            onError={handleError}
+            onScan={handleScan}
+          />
+        )
+      default:
+        return <>
+          <p> Begin Scanning Below...</p>
+          <div style={{position: 'relative', height: '100%'}}>
+          <FontAwesomeIcon icon={faArrowDown} size={'2x'}
+            className="arrow-moving-down"
+            style={{color: "#FFF", marginLeft: 'auto', position: 'absolute', marginRight: 'auto', left: 0, right: 0}}
+          />
+          </div>
+          </>
+
+    }
+  }
+  )(), [props])
   return (
     <div className="App" style={{height: window.innerHeight}}>
 
@@ -62,23 +97,9 @@ function App(props) {
         state.scanMode ? (
           <>
             <div className="qr-content">
-              {
-                props.scanner_active && (
-                  <QrReader
-                    className="qr-scanner"
-                    delay={1000}
-                    onError={handleError}
-                    onScan={handleScan}
-                  />
-                ) || <p> Begin Scanning Below...</p>
-              }
-              {
-                props.most_recent_code && props.confirmed_qr_code && (
-                  <h2 className="registration-success">Successfully registered!</h2>
-                )
-              }
+              {qrContent}
               {props.loading && <p>Loading...</p>}
-            {props.qr_code_fetch_error && <p>There was an error scanning the QR code.. {props.qr_code_fetch_error.message}</p>}
+              
             </div>
             {
               !showModal ? (
@@ -110,7 +131,7 @@ const mapDispatchToProps = {
   scanQrCode,
   confirmQrCode,
   setScannerActive,
-  resetScanner
+  resetScanner,
 }
 const mapStateToProps = ({qr_scanner}) => qr_scanner
 
