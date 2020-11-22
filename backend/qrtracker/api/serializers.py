@@ -26,3 +26,17 @@ class EventPromoterRegisterSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         e = EventPromoterRegister.objects.create(**validated_data)
         return e
+
+class EventPromoterStatisticsSerializer(serializers.ModelSerializer):
+    registration_count = serializers.IntegerField()
+    promoter_name = serializers.CharField(source='promoter.full_name')
+    class Meta:
+        model = EventPromoter
+        fields = ['id', 'promoter_id', 'registration_count', 'promoter_name']
+
+class EventStatisticsSerializer(serializers.ModelSerializer):
+    event_promoters = EventPromoterStatisticsSerializer(many=True)
+    location = LocationSerializer()
+    class Meta: 
+        model = Event
+        fields = ('id', 'name', 'date', 'location', 'event_promoters')

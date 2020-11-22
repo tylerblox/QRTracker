@@ -11,6 +11,8 @@ from django.conf import settings
 from . import serializers
 from qrtracker.models import *
 
+from django.db.models import Prefetch, F, Count
+
 class EventPromoterViewSet(viewsets.ModelViewSet):
     queryset = EventPromoter.objects.all()
     serializer_class = serializers.EventPromoterSerializer
@@ -34,5 +36,21 @@ class EventPromoterRegisterViewSet(viewsets.ModelViewSet, APIView):
 
     serializer_class = serializers.EventPromoterRegisterSerializer
 
+class EventStatisticsViewSet(viewsets.ModelViewSet, APIView):
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
 
+    queryset = Event.objects.all().prefetch_related(
+        Prefetch(
+            'eventpromoter_set',
+            queryset=EventPromoter.objects.all().annotate(
+                registration_count=Count(F('eventpromoterregister'))
+            ),
+            to_attr="event_promoters"
+        )
+     
+     )
+
+    serializer_class = serializers.EventStatisticsSerializer
+    
         
