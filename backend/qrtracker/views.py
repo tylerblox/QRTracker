@@ -52,4 +52,4 @@ catchall = catchall_dev if settings.DEBUG else catchall_prod
 
 @staff_member_required
 def admin_statistics(request, path='', upstream='http://localhost:3000/'):
-    return  catchall(request, path='', upstream='http://localhost:3000/')
+    return  catchall(request, path, upstream)
