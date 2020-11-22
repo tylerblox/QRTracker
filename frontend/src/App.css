@@ -32,15 +32,6 @@ p, .registration-success {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 button, .button--primary {
   border: 1px solid black;
   padding: 14px 40px;
@@ -50,6 +41,12 @@ button, .button--primary {
   background-color: aquamarine;
   border-radius: 2px;
   cursor: pointer;
+}
+.button--primary, .button--secondary {
+  padding: 30px 30px;
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 1px 1px 5px grey;
 }
 
 .button--secondary {
@@ -81,6 +78,52 @@ button:hover {
   display: grid;
   align-items: center;
 }
+.scan {
+  background-color:  #222;
+  animation-name: begin-scan-animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+.scan:focus {
+  outline:0;
+} 
+
+.scan-stop {
+  background-color: darkslategray; /* Green */
+}
+.scan-stop:focus {
+  outline:0;
+} 
+.scan-again {
+  background-color: #222;
+  animation-name: scan-again-animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes scan-again-animation {
+  0% {
+    background-color: #222;
+  }
+  50% {
+    background-color: #FFFF66;
+  }
+  100% {
+    background-color: #222;
+  }
+}
+@keyframes begin-scan-animation {
+  0% {
+    background-color: #222;
+  }
+  50% {
+    background-color:aquamarine;
+  }
+  100% {
+    background-color: #222;
+  }
+}
+
 @media only screen and (min-device-height : 375px) and (max-device-height : 400px) {
   .App {
     text-align: center;
@@ -109,15 +152,30 @@ button:hover {
   flex-direction: column;
 }
 
+.confirm-event-content--topic {
+  color: lightgrey;
+  font-weight: 700;
+  height: 5%;
+  background: linear-gradient(135deg, black 25%, transparent 25%) -25px 0,
+    linear-gradient(225deg, black 25%, transparent 25%) -25px 0,
+    linear-gradient(315deg, black 25%, transparent 25%),
+    linear-gradient(45deg, black 25%, transparent 25%);
+  background-color: #232323;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .confirm-event-modal ul {
   padding:0;
   margin: 0;
   list-style: none;
 }
 .confirm-event-modal li {
-  padding: 2em;
+  padding: 1em;
   text-decoration: none;
   list-style: none;
+  font-weight: 600;
 }
 
 .confirmation-buttons {

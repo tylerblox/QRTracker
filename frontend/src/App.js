@@ -5,6 +5,8 @@ import {scanQrCode, confirmQrCode, setScannerActive, resetScanner} from './actio
 import logo from './logo.svg';
 import './App.css';
 import {ConfirmEventModal} from './components/ConfirmEventModal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCamera } from '@fortawesome/free-solid-svg-icons'
 
 function App(props) {
   const [state, setState] = React.useState({
@@ -80,14 +82,20 @@ function App(props) {
             </div>
             {
               !showModal ? (
-                <button
+                <button className={
+                  props.most_recent_code 
+                  ? 'scan-again' 
+                  : props.scanner_active 
+                  ? 'scan-stop' 
+                  : 'scan'
+                }
                   onClick={
                     () => {
                       props.setScannerActive(!props.scanner_active)
                     }
                   }
                 >
-                  {props.most_recent_code ? 'Scan Again' : props.scanner_active ? 'Stop Scanning' : 'Start Scanning'}
+                  <FontAwesomeIcon icon={faCamera} size={'2x'}/>
                 </button>
               ) : null
             }
