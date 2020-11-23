@@ -1,6 +1,5 @@
-import { faPray } from "@fortawesome/free-solid-svg-icons";
 import React, {useReducer, useEffect, useState} from "react";
-import {getEvents, getEventRegistrations} from '../../actions'
+import {getEvents} from '../../actions'
 import {statisticsPageReducer, initialState} from '../../reducers/adminReducers'
 
 export default function Statistics(props){

@@ -162,7 +162,30 @@ button:hover {
   display: flex;
   flex-direction: column;
 }
-
+.event-name-display-holder {
+  padding: 0em 2em 0em 2em;
+  height: 150px;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  font-weight: 400;
+  font-variant-caps: petite-caps;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.event-name-display-holder h1 {
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  font-weight: 400;
+}
+.event-name-display-holder::before {
+  top: 0px;
+  left: 0%;
+  width: 100%;
+  content: "";
+  height: 200px;
+  position:absolute;
+  z-index: -1;
+  box-shadow:0px 2px 2px  darkblue;
+}
 .confirm-event-content--topic {
   color: lightgrey;
   font-weight: 700;
@@ -180,20 +203,25 @@ button:hover {
 .confirm-event-modal ul {
   padding:0;
   margin: 0;
+  width: 100%;
   list-style: none;
 }
 .confirm-event-modal li {
-  padding: 1em;
+  padding: 4em;
   text-decoration: none;
   list-style: none;
   font-weight: 600;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom:2px solid darkblue;
 }
 
 .confirmation-buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-shrink: 0;
-  padding: 2em;
+  padding: 2em 4em 2em 4em;
 }
 
 .confirm-event-content {

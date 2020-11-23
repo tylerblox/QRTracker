@@ -28,7 +28,7 @@ export function getEvents(queryParameter=''){
         )
         .then(res => {
             if (!res.ok){
-                throw 'whoops'
+                throw new Error('Whoops!')
             }
             
             return res.json()
