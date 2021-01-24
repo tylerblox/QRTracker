@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faTimes, faCalendarDay, faStore } from '@fortawesome/free-solid-svg-icons'
 
 export const ConfirmEventModal = (props) => {
     
@@ -10,15 +10,17 @@ export const ConfirmEventModal = (props) => {
                 {props.error_with_confirmation && (<p className="error-text">Error in confirming event.  Please try again, or <span onClick={props.resetScanner}>Scan a new Code</span></p>)}
                 <div className="confirm-event-content--topic">Confirm this Event</div>
                 <div className="confirm-event-content--event">
-                    <h1 className="confirm-event-content--event--name">
-                        {props.most_recent_code.event.name}
-                    </h1>
+                    <div className="event-name-display-holder">
+                        <h1 className="confirm-event-content--event--name">
+                            {props.most_recent_code.event.name}
+                        </h1>
+                    </div>
                     <ul>
                         <li>
-                            {props.most_recent_code.event.date}
+                            <FontAwesomeIcon icon={faCalendarDay} size={'2x'} style={{width: 32}}/><span>{props.most_recent_code.event.date}</span>
                         </li>
                         <li>
-                            {props.most_recent_code.event.location.name}
+                            <FontAwesomeIcon icon={faStore} size={'2x'} style={{width: 32}}/>{props.most_recent_code.event.location.name}
                         </li>
                     </ul>
                 </div>

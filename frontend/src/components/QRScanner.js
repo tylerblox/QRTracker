@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { connect } from 'react-redux'
 import QrReader from 'react-qr-reader'
@@ -12,12 +12,15 @@ function QRScanner(props) {
   const [state, setState] = React.useState({
     scanMode: true
   })
+  const {setScannerActive} = props
 
   const {most_recent_code:resultFromScanner} = props
 
-  React.useEffect(() => {
-    resultFromScanner && props.setScannerActive(false)
-  },[resultFromScanner])
+  React.useEffect(
+    () => {
+      resultFromScanner && setScannerActive(false)
+    },[resultFromScanner, setScannerActive]
+  )
 
   const handleScan = data => {
     if (data) {
@@ -112,7 +115,7 @@ function QRScanner(props) {
                 }
                   onClick={
                     () => {
-                      props.setScannerActive(!props.scanner_active)
+                      setScannerActive(!props.scanner_active)
                     }
                   }
                 >

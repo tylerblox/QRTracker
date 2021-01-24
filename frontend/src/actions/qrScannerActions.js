@@ -97,7 +97,7 @@ export function confirmQrCode(confirmed, payload){
             )
             .then(res => {
                 if (!res.ok){
-                    throw 'whoops'
+                    throw new Error('Whoops!')
                 }
                 
                 return res.json()
