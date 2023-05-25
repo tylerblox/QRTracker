@@ -9,3 +9,8 @@ Admins can generate QR codes for promoters, when a permissioned user scans ticke
 * start frontend server `npm start`
 * start backend server for development `DJANGO_ENV=development ./manage.py runserver`'
 * use localhost:8000 for app.
+
+### Some thoughts about this project.
+
+* I built this quickly to deploy on heroku, therefore the build files are stored in github which in general is a poor decision.
+* I prefer these days to separate front and back end into separate repos.
